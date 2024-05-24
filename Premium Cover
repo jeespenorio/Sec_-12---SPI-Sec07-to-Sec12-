@@ -1,0 +1,42 @@
+import pandas as pd
+
+data1 = {
+    'Make': ['Arctic Cat'],
+    'Model': ['ALL Model'],
+    'Vendor': ['NACH'],
+    'Vendor Name': ['NACHMAN INTERNATIONAL CO. LTD'],
+    
+    'Vendor Notes': ['Material_Type:Polyester 600d With Lining Classification:Extends to Rear Bumper'],
+    
+    'Product Type': ['PREMIUM EASY-LOAD COVER'],
+    
+    
+    'MPN': ['SC-12447-1'],
+    
+    'SKU': ['1101054']
+    
+  }
+
+list_models = [
+    
+'ZR 200',
+'ZR 200 ES'
+]
+
+years = list(range(2018, 2025))
+
+def generate_df(model, data, year):
+    data_copy = data.copy()
+    data_copy['Model'] = model
+    data_copy['Year'] = year
+    return pd.DataFrame(data_copy)
+
+dfs=[]
+for year in years:
+    df1 = pd.concat([generate_df(model, data1,year) for model in list_models], ignore_index = True)
+    dfs.append(df1)
+    
+final_df = pd.concat(dfs, ignore_index = True)
+
+final_df.head(5)
+
