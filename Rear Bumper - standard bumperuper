@@ -1,0 +1,113 @@
+import pandas as pd
+
+import pandas as pd
+
+data1 = {
+    'Make': ['Arctic Cat'],
+    'Model': ['ALL Model'],
+    'Vendor': ['NACH'],
+    'Vendor Name': ['NACHMAN INTERNATIONAL CO. LTD'],
+    
+    'Vendor Notes': ['OEM# 250000587, 860201511'],
+    
+    'Product Type': ['Rear Bumper - STANDARD BUMPER'],
+    
+    
+    'MPN': ['SC-12674B'],
+    
+    'SKU': ['1101061']
+    
+  }
+
+list_models = [
+
+'Renegade Backcountry X E-TEC 850' ,
+'Renegade Backcountry E-TEC 850' ,
+'Backcountry E-TEC 850' ,
+'Backcountry E-TEC 600R' ,
+'Backcountry X E-TEC 850' ,
+'Backcountry X-RS E-TEC 850 146' ,
+'Backcountry X-RS E-TEC 850 154' ,
+'MX Z X-RS E-TEC 800R',
+'MX Z X E-TEC 850',
+'MX Z TNT E-TEC 850',
+'MX Z X 4-TEC 1200',
+'MX Z X E-TEC 600 HO',
+'MX Z Blizzard 4-TEC 1200',
+'MX Z Blizzard ACE 900',
+'MX Z Blizzard E-TEC 800R',
+'MX Z Blizzard E-TEC 600 HO',
+'MX Z TNT 4-TEC 1200',
+'MX Z TNT ACE 900',
+'MX Z TNT E-TEC 600 HO',
+'MX Z Sport 600 ACE',
+'MX Z Sport 600 Carb',
+'MX Z X-RS Iron Dog E-TEC 600 HO',
+'MX Z X-RS E-TEC 850',
+'MX Z Blizzard E-TEC 850',
+'MX Z Blizzard E-TEC 600R',
+'MX Z TNT E-TEC 600R',
+'MX Z X E-TEC 600R',
+'MX Z X-RS E-TEC 600R',
+'Renegade X E-TEC 850',
+'Renegade Adrenaline E-TEC 850',
+'Renegade 850',
+'Renegade 850 X xc',
+'Renegade X-RS E-TEC 850',
+'Renegade Backcountry X E-TEC 850',
+'Renegade Backcountry E-TEC 850',
+'Renegade Adrenaline E-TEC 600R',
+'Renegade Enduro E-TEC 600R',
+'Renegade Enduro E-TEC 850',
+'Renegade X E-TEC 600R',
+'Renegade X-RS with Comp Package E-TEC 600R',
+'Summit Edge E-TEC 850 165',
+'Summit Edge E-TEC 850 175',
+'Summit Neo 600 EFI-40',
+'Summit Neo+ 600 EFI-55',
+'Summit SP E-TEC 850 146',
+'Summit SP E-TEC 850 154',
+'Summit SP E-TEC 850 165',
+'Summit X E-TEC 850 154',
+'Summit X E-TEC 850 165',
+'Summit X E-TEC 850 Turbo R 154',
+'Summit X E-TEC 850 Turbo R 165',
+'Summit X with Expert Package E-TEC 850 154',
+'Summit X with Expert Package E-TEC 850 165',
+'Summit X with Expert Package E-TEC 850 Turbo R 154',
+'Summit X with Expert Package E-TEC 850 Turbo R 165',
+'Summit X with Expert Package E-TEC 850 Turbo R 175',
+'Shredder DS 850 E-TEC',
+'Shredder DS 850 E-TEC Turbo R',
+'Shredder RE 850 E-TEC Turbo R',
+'Shredder RE 850 E-TEC',
+'BoonDocker DS 850 E-TEC',
+'Rave RE 850 E-TEC',
+'Xterrian RE 900 ACE Turbo R',
+'Xterrian Brutal 850 E-TEC',
+'Xterrian RE 850 E-TEC',
+
+
+
+
+
+
+]
+
+years = list(range(2017, 2023))
+
+def generate_df(model, data, year):
+    data_copy = data.copy()
+    data_copy['Model'] = model
+    data_copy['Year'] = year
+    return pd.DataFrame(data_copy)
+
+dfs=[]
+for year in years:
+    df1 = pd.concat([generate_df(model, data1,year) for model in list_models], ignore_index = True)
+    dfs.append(df1)
+    
+final_df = pd.concat(dfs, ignore_index = True)
+
+final_df.head(5)
+
