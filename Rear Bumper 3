@@ -1,0 +1,103 @@
+import pandas as pd
+
+data1 = {
+    'Make': ['Arctic Cat'],
+    'Model': ['ALL Model'],
+    'Vendor': ['NACH'],
+    'Vendor Name': ['NACHMAN INTERNATIONAL CO. LTD'],
+    
+    'Vendor Notes': ['OEM# 7639-774; LENGTH: 330MM(13"), WIDTH: 135MM(5.3"), THICKNESS: 18MM(0.7"). PLASTIC SCREW: M6X12MM X 10PCS; MATERIAL: EVA FOAM, WITH SELF-ADHESIVE BACKING'],
+    
+    'Product Type': ['Knee Pads'],
+    
+    
+    'MPN': ['SM-12722'],
+    
+    'SKU': ['1101048']
+    
+  }
+
+list_models = [
+
+'Blast M 4000 Special Edition',
+'Blast ZR 4000',
+'Blast LT 4000',
+'Blast M 4000',
+'Blast XR 4000 Touring',
+'Blast XR 4000',
+'Blast M LTD 4000',
+'M 8000 Sno Pro 153',
+'M 8000 Sno Pro 162',
+'M 8000 Mountain Cat 153',
+'M 8000 Mountain Cat 162',
+'M 8000 153',
+'M 6000 153',
+'M 6000 141',
+'M 6000 SE ES 141',
+'M 6000 SE ES 153',
+'M 8000 Mountain Cat Alpha One 154',
+'M 8000 Mountain Cat Alpha One 165',
+'M 8000 Hardcore 153',
+'M 8000 Hardcore 162',
+'M 8000 Alpha One 154',
+'M 8000 Hardcore Alpha One 154',
+'M 8000 Alpha One 165',
+'M 8000 Hardcore Alpha One 165',
+'M 8000 Mountain Cat Alpha One ES 154',
+'M 8000 Mountain Cat Alpha One ES 165',
+'M 8000 Hardcore Alpha One ES 154',
+'M 8000 Hardcore Alpha One ES 165',
+'M 8000 Mountain Cat Alpha One ATAC 165',
+'M 8000 Mountain Cat Alpha One ATAC 154',
+'M 8000 Hardcore Alpha One ES 154 2.6in.',
+'M 8000 Hardcore Alpha One 146',
+'M 8000 Mountain Cat Alpha One ATAC ES 165',
+'M 8000 Mountain Cat Alpha One ATAC ES 154',
+'M 8000 Hardcore Alpha One 154 2.6in.',
+'M 8000 Hardcore Alpha One ES 146',
+'M 8000 Mountain Cat Alpha One 146',
+'M 8000 Mountain Cat Alpha One 154 2.6in.',
+'M 8000 Mountain Cat Alpha One ATAC 146',
+'M 8000 Mountain Cat Alpha One ATAC 154 2.6in.',
+'M 8000 Mountain Cat Alpha One ATAC ES 146',
+'M 8000 Mountain Cat Alpha One ATAC ES 154 2.6in.',
+'M 8000 Mountain Cat Alpha One ES 146',
+'M 8000 Mountain Cat Alpha One ES 154 2.6in.',
+'Riot 6000',
+'Riot 8000 1.6in.',
+'Riot X 8000',
+'Riot 8000 1.35in.',
+'Riot 6000 1.35in.',
+'Riot 8000 ATAC 1.6in.',
+'Riot X 8000 ATAC',
+'Riot 9000 ATAC',
+'Riot 8000 ATAC',
+'Riot 8000',
+
+
+
+
+
+
+
+
+
+]
+
+years = list(range(2018, 2025))
+
+def generate_df(model, data, year):
+    data_copy = data.copy()
+    data_copy['Model'] = model
+    data_copy['Year'] = year
+    return pd.DataFrame(data_copy)
+
+dfs=[]
+for year in years:
+    df1 = pd.concat([generate_df(model, data1,year) for model in list_models], ignore_index = True)
+    dfs.append(df1)
+    
+final_df = pd.concat(dfs, ignore_index = True)
+
+final_df
+
