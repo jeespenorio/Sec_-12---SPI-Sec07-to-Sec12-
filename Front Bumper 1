@@ -1,0 +1,48 @@
+import pandas as pd
+
+data1 = {
+    'Make': ['Arctic Cat'],
+    'Model': ['ALL Model'],
+    'Vendor': ['NACH'],
+    'Vendor Name': ['NACHMAN INTERNATIONAL CO. LTD'],
+    
+    'Vendor Notes': ['OEM# 8639-514, 8639-515, 8639-516; L: 485MM, W: 600MM, H:300MM, TUBE OD: 25.4MM, 19.3MM. THICKNESS: 2MM, HOLE: 5.8 / 9.5MM, CLIP NUT M6* P1.0 X 4PCS, WITH INSTRUCTION SHEET'],
+    
+    'Product Type': ['Front Bumper'],
+    
+    
+    'MPN': ['SC-12672'],
+    
+    'SKU': ['1101058']
+    
+  }
+
+list_models = [
+
+'ZR 200',
+'ZR 200 ES',
+'M 6000 153',
+'M 6000 141',
+'M 6000 SE ES 141',
+'M 6000 SE ES 153',
+'ZR 6000'
+
+]
+
+years = list(range(2024, 2025))
+
+def generate_df(model, data, year):
+    data_copy = data.copy()
+    data_copy['Model'] = model
+    data_copy['Year'] = year
+    return pd.DataFrame(data_copy)
+
+dfs=[]
+for year in years:
+    df1 = pd.concat([generate_df(model, data1,year) for model in list_models], ignore_index = True)
+    dfs.append(df1)
+    
+final_df = pd.concat(dfs, ignore_index = True)
+
+final_df.head(5)
+
