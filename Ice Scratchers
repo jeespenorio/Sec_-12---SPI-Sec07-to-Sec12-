@@ -1,0 +1,107 @@
+import pandas as pd
+
+data1 = {
+    'Make': ['Ski-Doo'],
+    'Model': ['ALL Model'],
+    'Vendor': ['NACH'],
+    'Vendor Name': ['NACHMAN INTERNATIONAL CO. LTD'],
+    
+    'Vendor Notes': ['OEM# 2890644; SPRING:O.D.:5.1MM, L:217MM X2PCS, BOLT:M8 X P1.25X20MM, NYLOK TREATMENT X2PCS. JIG 88.6X25X3MM, HOLE 8.3/4.8MMX1PC, RAIL CAP:118.8X33X16MMX2PCS.'],
+    
+    'Product Type': ['Ice Scratchers'],
+    
+    
+    'MPN': ['SM-12730'],
+    
+    'SKU': ['1101050']
+    
+  }
+
+list_models = [
+
+'650 RMK KHAOS Slash 146',
+'650 PRO-RMK Matryx 155',
+'650 PRO-RMK 155',
+'850 RMK KHAOS 155',
+'850 RMK KHAOS 155 3in.',
+'850 RMK KHAOS QD2 155 2.75in.',
+'850 RMK KHAOS QD2 155 3in.',
+'850 RMK KHAOS 163 2.6in.',
+'850 RMK KHAOS QD2 163 3in.',
+'850 RMK KHAOS QD2 165 2.75in.',
+'850 RMK KHAOS AXYS 155 3in.',
+'850 RMK KHAOS AXYS 163 3in.',
+'850 RMK KHAOS AXYS 155 2.75in.',
+'850 RMK KHAOS Matryx Slash 165 2.75in.',
+'850 RMK KHAOS Matryx Slash 146',
+'850 RMK KHAOS Matryx Slash 163 3in.',
+'850 RMK KHAOS Matryx 155',
+'850 RMK KHAOS Matryx Slash 155',
+'850 RMK KHAOS AXYS 165 2.75in.',
+'850 RMK KHAOS Slash 155',
+'850 RMK KHAOS Slash 146',
+'850 RMK KHAOS Slash 165',
+'850 RMK KHAOS Slash 163',
+'850 PRO-RMK 174',
+'850 PRO-RMK 163',
+'850 PRO-RMK 163 3in.',
+'850 PRO-RMK 155',
+'850 PRO-RMK 155 3in.',
+'850 PRO-RMK QD2 155 2.75in.',
+'850 PRO-RMK QD2 155 3in.',
+'850 PRO-RMK QD2 163 3in.',
+'850 PRO-RMK QD2 165 2.75in.',
+'850 PRO-RMK QD2 174 3in.',
+'850 PRO-RMK Matryx Slash 155 3in.',
+'850 PRO-RMK AXYS 165 2.75in.',
+'850 PRO-RMK Matryx Slash 155 2.75in.',
+'850 PRO-RMK AXYS 155 2.75in.',
+'850 PRO-RMK AXYS 155 3in.',
+'850 PRO-RMK Matryx Slash 163 3in.',
+'850 PRO-RMK Matryx 155',
+'850 PRO-RMK Matryx Slash 165 2.75in.',
+'850 PRO-RMK AXYS 163 3in.',
+'850 PRO-RMK Slash 165',
+'850 PRO-RMK Slash 155',
+'850 PRO-RMK Slash 163',
+'Patriot Boost RMK KHAOS Matryx Slash 155',
+'Patriot Boost PRO-RMK Matryx Slash 163 3in.',
+'Patriot Boost PRO-RMK Matryx Slash 165 2.75in.',
+'Patriot Boost PRO-RMK Slash 155',
+'Patriot Boost RMK KHAOS Slash 163',
+'Patriot 9R RMK KHAOS Slash 146',
+'Patriot Boost INDY VR1 129',
+'Patriot Boost RMK KHAOS Slash 155',
+'Patriot Boost RMK KHAOS Slash 165',
+'Patriot 9R PRO-RMK Slash 165',
+'Patriot Boost PRO-RMK Slash 165',
+'Patriot 9R RMK KHAOS Slash 163',
+'Patriot 9R PRO-RMK Slash 163',
+'Patriot Boost INDY VR1 137',
+'Patriot Boost PRO-RMK Slash 163',
+'Patriot Boost SwitchBack Assault 146',
+'Patriot 9R RMK KHAOS Slash 155',
+'Patriot 9R PRO-RMK Slash 155',
+'Patriot 9R RMK KHAOS Slash 165'
+
+
+
+]
+
+years = list(range(2024, 2025))
+
+def generate_df(model, data, year):
+    data_copy = data.copy()
+    data_copy['Model'] = model
+    data_copy['Year'] = year
+    return pd.DataFrame(data_copy)
+
+dfs=[]
+for year in years:
+    df1 = pd.concat([generate_df(model, data1,year) for model in list_models], ignore_index = True)
+    dfs.append(df1)
+    
+final_df = pd.concat(dfs, ignore_index = True)
+
+final_df
+
