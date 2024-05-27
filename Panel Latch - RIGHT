@@ -1,0 +1,74 @@
+import pandas as pd
+
+data1 = {
+    'Make': ['Ski-Doo'],
+    'Model': ['ALL Model'],
+    'Vendor': ['NACH'],
+    'Vendor Name': ['NACHMAN INTERNATIONAL CO. LTD'],
+    
+    'Vendor Notes': ['OEM# 517308586; L: 50.7MM, W: 26.7MM, H: 18.4MM/12.4MM. COLD RESISTANCE;  -30°C TO -40°C. MATERIAL: POM'],
+    
+    'Product Type': ['Panel Latch - RIGHT'],
+    
+    
+    'MPN': ['SM-12803R'],
+    
+    'SKU': ['1101052']
+    
+  }
+
+list_models = [
+
+'Freeride E-TEC 850 146',
+'Freeride E-TEC 850 154',
+'Freeride E-TEC 850 165',
+'Freeride E-TEC 850 137',
+'Freeride E-TEC 850 Turbo 154',
+'Freeride E-TEC 850 Turbo 165',
+'Freeride E-TEC 850 Turbo 146',
+'Summit X E-TEC 850 154',
+'Summit X E-TEC 850 165',
+'Summit SP E-TEC 850 154',
+'Summit SP E-TEC 850 165',
+'Summit X E-TEC 850 175',
+'Summit SP E-TEC 850 146',
+'Summit SP E-TEC 850 175',
+'Summit X with Expert Package E-TEC 850 154',
+'Summit X with Expert Package E-TEC 850 165',
+'Summit X E-TEC 850 Turbo 154',
+'Summit X E-TEC 850 Turbo 165',
+'Summit X with Expert Package E-TEC 850 175',
+'Summit X with Expert Package E-TEC 850 Turbo 154',
+'Summit X with Expert Package E-TEC 850 Turbo 165',
+'Summit X with Expert Package E-TEC 850 Turbo 175',
+'Summit X w/ Expert Package E-TEC 850 Turbo 154 2.5',
+'Summit Edge E-TEC 850 175',
+'Summit Edge E-TEC 850 154',
+'Summit X with Expert Package E-TEC 850 154 2.5',
+'Summit Edge E-TEC 850 165',
+'Summit X E-TEC 850 Turbo R 154',
+'Summit X E-TEC 850 Turbo R 165',
+'Summit X with Expert Package E-TEC 850 Turbo R 154',
+'Summit X with Expert Package E-TEC 850 Turbo R 165',
+'Summit X with Expert Package E-TEC 850 Turbo R 175',
+
+
+]
+
+years = list(range(2021, 2025))
+
+def generate_df(model, data, year):
+    data_copy = data.copy()
+    data_copy['Model'] = model
+    data_copy['Year'] = year
+    return pd.DataFrame(data_copy)
+
+dfs=[]
+for year in years:
+    df1 = pd.concat([generate_df(model, data1,year) for model in list_models], ignore_index = True)
+    dfs.append(df1)
+    
+final_df = pd.concat(dfs, ignore_index = True)
+
+final_df
+
