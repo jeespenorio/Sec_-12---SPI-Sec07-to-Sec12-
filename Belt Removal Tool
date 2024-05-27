@@ -1,0 +1,119 @@
+import pandas as pd
+
+data1 = {
+    'Make': ['Arctic Cat'],
+    'Model': ['ALL Model'],
+    'Vendor': ['NACH'],
+    'Vendor Name': ['NACHMAN INTERNATIONAL CO. LTD'],
+    
+    'Vendor Notes': ['OLD ITEM SM-12600 IS SUPERSEDED TO SM-12710; OEM# 0644-601, 0644-659, 0744-098; O.D.: 8MM(0.3") / 5.3MM(0.21"), LENGTH: 100.5MM(4") / 51MM(2")THREAD:5/16"-24UNC X L:1.8", DISTANCE FROM TOOL END TO THREAD: 13.3MM(0.52")MATERIAL: STEEL 1015'],
+    
+    'Product Type': ['Belt Removal Tool'],
+    
+    
+    'MPN': ['SM-12710'],
+    
+    'SKU': ['1101045']
+    
+  }
+
+list_models = [
+
+'ZR 6000 LXR 129',
+'ZR 6000 LXR 137',
+'ZR 6000 Sno Pro 129',
+'ZR 6000 Sno Pro 137',
+'ZR 6000 Limited 129',
+'ZR 6000 Limited 137',
+'ZR 6000 El Tigre',
+'ZR 6000 RR',
+'ZR 7000 LXR 129',
+'ZR 7000 LXR 137',
+'ZR 7000 Sno Pro 129',
+'ZR 7000 Sno Pro 137',
+'ZR 7000 Limited 129',
+'ZR 7000 Limited 137',
+'ZR 7000 El Tigre',
+'ZR 7000 RR',
+'ZR 8000 LXR 129',
+'ZR 8000 LXR 137',
+'ZR 8000 Sno Pro 129',
+'ZR 8000 Sno Pro 137',
+'ZR 8000 Limited 129',
+'ZR 8000 Limited 137',
+'ZR 8000 El Tigre',
+'ZR 8000 RR',
+'ZR 9000 LXR',
+'ZR 9000 Sno Pro 129',
+'ZR 9000 Sno Pro 137',
+'ZR 9000 Limited 129',
+'ZR 9000 Limited 137',
+'ZR 9000 El Tigre',
+'ZR 9000 RR',
+'ZR 5000 LXR',
+'ZR 6000 LXR ES 129',
+'ZR 6000 LXR ES 137',
+'ZR 6000 Sno Pro ES 129',
+'ZR 6000 Sno Pro ES 137',
+'ZR 6000 Limited ES 129',
+'ZR 6000 Limited ES 137',
+'ZR 6000 El Tigre ES 129',
+'ZR 6000 El Tigre ES 137',
+'ZR 6000 RR ES 129',
+'ZR 6000 RR ES 137',
+'ZR 8000 LXR ES 129',
+'ZR 8000 LXR ES 137',
+'ZR 8000 Sno Pro ES 129',
+'ZR 8000 Sno Pro ES 137',
+'ZR 8000 Limited ES 129',
+'ZR 8000 Limited ES 137',
+'ZR 8000 El Tigre ES 129',
+'ZR 8000 El Tigre ES 137',
+'ZR 8000 RR ES 137',
+'ZR 8000 RR ES 129',
+'ZR 9000 RR 129',
+'ZR 9000 RR 137',
+'ZR 9000 Thundercat',
+'ZR 6000 RS',
+'ZR 8000 Sno Pro ES 129 Early Build',
+'ZR 8000 Sno Pro ES 137 Early Build',
+'ZR 8000 ES 129',
+'ZR 8000 ES 137',
+'ZR 7000 129',
+'ZR 7000 137',
+'ZR 6000 R XC 129',
+'ZR 6000 ES 129',
+'ZR 6000 ES 137',
+'ZR 9000 Thundercat iACT',
+'ZR 9000 Limited',
+'ZR 9000 Limited iACT',
+'ZR 8000 Limited ES 137 iACT',
+'ZR 8000 Limited ES 129 iACT',
+'ZR 6000 Limited ES 129 iACT',
+'ZR 6000 Limited ES 137 iACT',
+'ZR 7000 Limited 137 iACT',
+'ZR 6000 R XC',
+'ZR 9000 Thundercat ATAC',
+'ZR 8000 Limited ES ATAC 137',
+'ZR 6000 Limited ES ATAC 137',
+'ZR 9000 Thundercat EPS',
+'ZR 9000 Thundercat EPS ATAC'
+]
+
+years = list(range(2016, 2025))
+
+def generate_df(model, data, year):
+    data_copy = data.copy()
+    data_copy['Model'] = model
+    data_copy['Year'] = year
+    return pd.DataFrame(data_copy)
+
+dfs=[]
+for year in years:
+    df1 = pd.concat([generate_df(model, data1,year) for model in list_models], ignore_index = True)
+    dfs.append(df1)
+    
+final_df = pd.concat(dfs, ignore_index = True)
+
+final_df
+
